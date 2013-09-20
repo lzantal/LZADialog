@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>LZADialog Demo</title>
+  <script src="../lzadialog.js"></script>
+</head>
+<body>
+<h1>LZADialog Demo v1.6</h1>
+<h2>developed for <a href="http://RaptorGL.com">RaptorGL Editor</a></h2>
+<h4>make sure you update the nwworkingdir options to reflect your home directory</h4>
+<button onclick="saveFile();">Save File As</button><br>
+<button onclick="saveFile2();">Save File As in Home Dir</button><br>
+<button onclick="saveFile3();">Save File As with default filename "example.js"</button>
+<br>
+<button onclick="getFile();">File Choose</button><br>
+<button onclick="getFile2();">File Choose in Home Dir</button>
+<br>
+<button onclick="getFile3();">File Choose Many</button>
+<br>
+<button onclick="getDir();">Choose Dir</button>
+<br>
+<button onclick="getDir2();">Choose Dir in Home</button>
+<br>
+<button onclick="getWebkitDir();">Choose Webkit Dir</button>
+<br>
+<button onclick="getWebkitDir();">Choose Webkit Dir in Home</button>
+
+<script>
+function saveFile(){
+    LZADialog.saveFileAs(function(file){
+            console.log(file.path);
+        }
+    );
+}
+
+function saveFile2(){
+    LZADialog.saveFileAs({nwworkingdir:'/home/user/'}, function(file){
+            console.log(file.path);
+        }
+    );
+}
+
+function saveFile3(){
+    LZADialog.saveFileAs({filename:'example.js'}, function(file){
+            console.log(file.path);
+        }
+    );
+}
+
+function getFile(){
+    LZADialog.selectFile(function(file){
+            console.log('complete callback: '+ file.path);
+    });
+}
+
+function getFile2(){
+    LZADialog.selectFile({nwworkingdir:'/home/user/'}, function(file){
+            console.log('complete callback: '+ file.path);
+        }
+    );
+}
+
+function getFile3(){
+    LZADialog.selectFile({multiple: true}, function(file){
+            for(var i=0, len = file.length; i<len; i++){
+                console.log('complete callback: '+ file[i].path);
+            }
+        }
+    );
+}
+
+function getDir(){
+    LZADialog.selectDir(function(file){
+            console.log('complete callback: '+ file.path);
+        }
+    );
+}
+
+function getDir2(){
+    LZADialog.selectDir({nwworkingdir:'/home/user/'}, function(file){
+            console.log('complete callback2: '+ file.path);
+        }
+    );
+}
+
+function getWebkitDir(){
+    LZADialog.selectWebkitDir({nwworkingdir:'/home/user/'}, function(file){
+            for(var i=0, len = file.length; i<len; i++){
+                console.log('complete callback: '+ file[i].path);
+            }
+        }
+    );
+}
+
+function getWebkitDir2(){
+    LZADialog.selectWebkitDir(function(file){
+            for(var i=0, len = file.length; i<len; i++){
+                console.log('complete callback: '+ file[i].path);
+            }
+        }
+    );
+}
+</script>
+</body>
+</html>
