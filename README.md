@@ -1,6 +1,6 @@
 ## LZADialog v1.6
 
-Static dialog class for [node-webkit](https://github.com/rogerwang/node-webkit).    
+Static dialog class for [nwjs](https://github.com/nwjs/nw.js).    
 Opens native OS dialogs for selecting files, directories and saving files.  
 Developed for [RaptorGL Editor](http://raptorgl.com).  
   
