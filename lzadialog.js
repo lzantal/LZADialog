@@ -85,6 +85,8 @@
         else{ f.removeAttribute("nwworkingdir"); }
         if(opt.multiple){ f.setAttribute("multiple",""); }
         else{ f.removeAttribute("multiple"); }
+        if(opt.accept){ f.setAttribute("accept",opt.accept); }
+        else{ f.removeAttribute("accept"); }
         f.style.display = "none";
         selectFileCE = function(evt){
             var files = selectFileDOM.files;
